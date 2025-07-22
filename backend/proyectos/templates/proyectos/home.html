@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Portafolio de José Miguel</title>
+    <link rel="stylesheet" href="{% static 'proyectos/css/style.css' %}">
+</head>
+<body>
+    <h1>Mis Proyectos</h1>
+
+    {% for proyecto in proyectos %}
+        <div>
+            <h2>{{ proyecto.title }}</h2>
+            <p>{{ proyecto.short_desc }}</p>
+            <p>Tecnologías: {{ proyecto.technologies }}</p>
+            <a href="{{ proyecto.github_url }}" target="_blank">Ver en GitHub</a>
+            {% if proyecto.demo_url %}
+                | <a href="{{ proyecto.demo_url }}" target="_blank">Demo</a>
+            {% endif %}
+        </div>
+        <hr>
+    {% endfor %}
+
+    <script src="{% static 'proyectos/js/script.js' %}"></script>  
+</body>
+</html>
