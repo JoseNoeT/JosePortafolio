@@ -9,6 +9,7 @@
         Mis Proyectos <br>
         <small class="text-muted">{{ now|date:"l d F Y" }}</small>
     </h2>
+<a href="{% url 'home' %}" class="btn btn-outline-secondary mt-4">← Volver al inicio</a>
 
     <div class="row">
         {% for proyecto in proyectos %}
