@@ -1,0 +1,14 @@
+# render.yaml
+services:
+  - type: web
+    name: portafolio-josemiguel
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && gunicorn portafolio.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portafolio.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
