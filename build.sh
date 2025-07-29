@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-# Instalar dependencias
-pip install -r requirements.txt
+set -o errexit
 
-# Aplicar migraciones
+# Entrar en la carpeta donde está manage.py
+cd backend
+
+# Instalar dependencias
+pip install -r ../requirements.txt
+
+# Migrar base de datos
 python manage.py migrate
 
-# Recolectar archivos estáticos
+# Recolectar estáticos
 python manage.py collectstatic --noinput
