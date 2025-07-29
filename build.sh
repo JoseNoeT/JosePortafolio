@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Ya estamos dentro de /backend gracias al rootDir
-pip install -r ../requirements.txt
+# Instalar dependencias desde la raíz del repo
+pip install -r $RENDER_PROJECT_ROOT/requirements.txt
+
+# Migrar y recolectar estáticos (ya estamos en backend)
 python manage.py migrate
 python manage.py collectstatic --noinput

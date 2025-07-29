@@ -6,16 +6,7 @@ services:
     buildCommand: ../build.sh
     startCommand: gunicorn portafolio.wsgi:application
     envVars:
-      - key: DEBUG
-        value: "False"
-      - key: SECRET_KEY
-        generateValue: true
-      - key: ALLOWED_HOSTS
-        value: "jose-portafolio.onrender.com"
       - key: DATABASE_URL
         fromDatabase: jose-db
-
-databases:
-  - name: jose-db
-    databaseName: jose_db
-    user: jose_user
+      - key: ALLOWED_HOSTS
+        value: joseportafolio.onrender.com
