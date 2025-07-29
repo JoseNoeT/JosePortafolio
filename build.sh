@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Instalar dependencias (subimos un nivel porque requirements.txt está en la raíz del repo)
-pip install -r ../requirements.txt
+# Instalar dependencias (ahora dentro de backend)
+pip install -r requirements.txt
 
-# Migrar la base de datos
+# Migrar base de datos
 python manage.py migrate
 
 # Recolectar archivos estáticos
