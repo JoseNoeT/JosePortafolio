@@ -1,14 +1,17 @@
 import os
 from pathlib import Path
-from datetime import datetime
+import dj_database_url
 
-# BASE_DIR
+# 📂 BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 🔐 Seguridad y entorno
-SECRET_KEY = os.environ.get("SECRET_KEY", "insecure-key-for-dev")  # Set en Render
-DEBUG = os.environ.get("DEBUG", "True") == "True"
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')  # Valor por defecto solo para desarrollo
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+
+# Hosts permitidos
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS if host]
 
 # 📦 Aplicaciones instaladas
 INSTALLED_APPS = [
@@ -37,19 +40,16 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'portafolio.urls'
 WSGI_APPLICATION = 'portafolio.wsgi.application'
 
-# 🛢️ Base de datos SQLite
+# 🛢️ Base de datos: Postgres en Render (automática si DATABASE_URL existe)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # 🖼️ Plantillas HTML
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Para archivos como base.html si los usas fuera de apps
+        'DIRS': [],  # Plantillas globales (no usadas por ahora)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -57,7 +57,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'proyectos.context_processors.global_context',  # para usar {{ now }}
+                'proyectos.context_processors.global_context',  # Si usas variables globales como {{ now }}
             ],
         },
     },
@@ -69,13 +69,12 @@ TIME_ZONE = 'America/Santiago'
 USE_I18N = True
 USE_TZ = True
 
-# 📁 Archivos estáticos
+# 📁 Archivos estáticos (para Render con WhiteNoise)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'proyectos/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# 📁 Archivos multimedia
+# 📁 Archivos multimedia (Render no guarda archivos persistentes)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
