@@ -2,7 +2,7 @@ services:
   - type: web
     name: jose-portafolio
     env: python
-    rootDir: backend
+    rootDir: .
     buildCommand: bash build.sh
     startCommand: gunicorn portafolio.wsgi:application
     envVars:
