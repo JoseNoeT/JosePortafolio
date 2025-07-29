@@ -10,3 +10,7 @@ def home(request):
 def detalle_proyecto(request, id):
     proyecto = get_object_or_404(Project, id=id)
     return render(request, 'proyectos/detalle.html', {'proyecto': proyecto})
+
+
+def sobre_mi(request):
+    return render(request, 'proyectos/sobre_mi.html')

@@ -4,29 +4,55 @@
 {% block title %}{{ proyecto.title }} - Detalle{% endblock %}
 
 {% block content %}
+{# ===============================
+   CONTENEDOR PRINCIPAL DEL DETALLE
+   - Fondo con separación (my-5)
+   - Centrado para mejor visualización
+================================ #}
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
+            <!-- TARJETA DEL PROYECTO -->
             <div class="card shadow-lg rounded-4 overflow-hidden">
+                
+                {# Imagen principal del proyecto (si existe) #}
                 {% if proyecto.image %}
-                    <img src="{{ proyecto.image.url }}" class="card-img-top" style="max-height: 350px; object-fit: cover;" alt="{{ proyecto.title }}">
+                    <img src="{{ proyecto.image.url }}" 
+                         class="card-img-top" 
+                         style="max-height: 350px; object-fit: cover;" 
+                         alt="{{ proyecto.title }}">
                 {% endif %}
+                
+                <!-- CUERPO DE LA TARJETA -->
                 <div class="card-body bg-light">
+                    <!-- Título del proyecto -->
                     <h2 class="fw-bold mb-3 text-primary">{{ proyecto.title }}</h2>
+                    
+                    <!-- Descripción detallada -->
                     <p class="mb-3 text-muted">{{ proyecto.description }}</p>
-                    <p class="mb-2"><strong>Tecnologías:</strong> {{ proyecto.technologies }}</p>
+                    
+                    <!-- Tecnologías utilizadas -->
+                    <p class="mb-2">
+                        <strong>Tecnologías:</strong> {{ proyecto.technologies }}
+                    </p>
 
+                    <!-- BOTONES DE ACCIÓN -->
                     <div class="d-flex gap-2 flex-wrap mt-4">
+                        {# Enlace a GitHub si existe #}
                         {% if proyecto.github_url %}
                             <a href="{{ proyecto.github_url }}" target="_blank" class="btn btn-outline-dark">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         {% endif %}
+                        
+                        {# Enlace a demo en vivo si existe #}
                         {% if proyecto.demo_url %}
                             <a href="{{ proyecto.demo_url }}" target="_blank" class="btn btn-primary">
                                 Ver Demo
                             </a>
                         {% endif %}
+                        
+                        {# Botón para volver a la página principal #}
                         <a href="{% url 'home' %}" class="btn btn-secondary">
                             ← Volver al inicio
                         </a>

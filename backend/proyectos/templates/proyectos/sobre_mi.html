@@ -1,0 +1,139 @@
+{% extends 'proyectos/base.html' %}
+{% load static %}
+
+{% block title %}Sobre mí{% endblock %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'proyectos/css/sobre_mi.css' %}">
+{% endblock %}
+
+{% block content %}
+{# ===============================
+   SECCIÓN 1: PRESENTACIÓN PERSONAL
+   Fondo oscuro con foto, nombre y breve descripción
+================================ #}
+<section class="py-5" style="background-color: #1e1e2f; color: white;">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- FOTO DEL PERFIL -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <img src="{% static 'proyectos/img/josecv.png' %}" alt="José Miguel" 
+             class="img-fluid rounded-circle shadow-lg border border-3 border-warning"
+             style="max-width: 230px;">
+      </div>
+
+      <!-- TEXTO DE PRESENTACIÓN -->
+      <div class="col-md-8">
+        <h2 class="fw-bold mb-3">
+          Hola, soy <span class="text-warning">José Miguel</span>
+        </h2>
+        <p class="fs-5">
+          Soy un desarrollador apasionado con experiencia en aplicaciones web y móviles. 
+          Me especializo en tecnologías como <strong>Django</strong>, <strong>React Native</strong> y <strong>Firebase</strong>.
+        </p>
+        <p class="text-muted">
+          Comprometido con el aprendizaje constante y la entrega de soluciones creativas. 
+          Actualmente finalizando mis estudios como Analista Programador.
+        </p>
+        <a href="#" class="btn btn-warning btn-lg mt-3 disabled" role="button" aria-disabled="true">
+          Descargar CV (Pronto)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===============================
+   SECCIÓN 2: HABILIDADES
+   Tres columnas con áreas de competencia (frontend, backend, herramientas)
+================================ #}
+<section class="py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h3 class="text-center mb-4 text-dark">💡 Habilidades</h3>
+    <div class="row text-center">
+      <!-- FRONTEND -->
+      <div class="col-md-4 mb-3">
+        <div class="p-4 bg-white shadow rounded-4 h-100">
+          <h5 class="text-primary">Frontend</h5>
+          <p class="text-muted">HTML, CSS, JavaScript, React Native</p>
+        </div>
+      </div>
+      <!-- BACKEND -->
+      <div class="col-md-4 mb-3">
+        <div class="p-4 bg-white shadow rounded-4 h-100">
+          <h5 class="text-primary">Backend</h5>
+          <p class="text-muted">Python, Django, Firebase</p>
+        </div>
+      </div>
+      <!-- HERRAMIENTAS -->
+      <div class="col-md-4 mb-3">
+        <div class="p-4 bg-white shadow rounded-4 h-100">
+          <h5 class="text-primary">Herramientas</h5>
+          <p class="text-muted">Git, GitHub, Trello, Render</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===============================
+   SECCIÓN 3: FRASE INSPIRADORA
+================================ #}
+<section class="py-5 text-center" style="background-color: #111;">
+  <div class="container">
+    <blockquote class="blockquote text-white">
+      <p class="mb-0 fs-4 fst-italic">
+        "La programación no es solo código, es creatividad, lógica y propósito."
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+{# ===============================
+   SECCIÓN 4: EXPERIENCIA Y FORMACIÓN
+   Línea de tiempo de proyectos y estudios
+================================ #}
+<section class="py-5" style="background-color: #f0f0f0;">
+  <div class="container">
+    <h3 class="text-center mb-5 text-dark">📘 Formación y Experiencia</h3>
+
+    <div class="timeline">
+      <!-- PRÁCTICA PROFESIONAL -->
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h5 class="fw-bold text-primary">2025 - Actualidad</h5>
+          <p><strong>Práctica Profesional</strong><br>
+          Analista Programador en <em>Razy Family</em>. Desarrollo de un portafolio profesional y apps educativas.</p>
+        </div>
+      </div>
+
+      <!-- ESTUDIOS -->
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h5 class="fw-bold text-primary">2022 - 2025</h5>
+          <p><strong>Estudios Superiores</strong><br>
+          Carrera de Analista Programador. Desarrollo de proyectos web y móviles con Django y React Native.</p>
+        </div>
+      </div>
+
+      <!-- PROYECTO CAMPUS360 -->
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h5 class="fw-bold text-primary">2023</h5>
+          <p><strong>Campus360</strong><br>
+          Sitio web para universitarios con carrito de compras, búsqueda de libros, y venta.</p>
+        </div>
+      </div>
+
+      <!-- PROYECTO STUDYMATE -->
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h5 class="fw-bold text-primary">2024</h5>
+          <p><strong>StudyMate</strong><br>
+          App educativa con inteligencia artificial que sugiere libros y evalúa comprensión con quizzes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
