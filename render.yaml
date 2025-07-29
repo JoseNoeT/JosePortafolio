@@ -3,7 +3,7 @@ services:
     name: jose-portafolio
     env: python
     rootDir: .
-    buildCommand: bash build.sh
+    buildCommand: bash backend/build.sh
     startCommand: gunicorn portafolio.wsgi:application
     envVars:
       - key: DATABASE_URL

@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Instalar dependencias (ahora dentro de backend)
-pip install -r requirements.txt
-
-# Migrar base de datos
-python manage.py migrate
-
-# Recolectar archivos estáticos
-python manage.py collectstatic --noinput
+pip install -r backend/requirements.txt
+python backend/manage.py migrate
+python backend/manage.py collectstatic --noinput
