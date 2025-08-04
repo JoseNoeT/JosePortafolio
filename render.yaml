@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jose-portafolio
+    env: python
+    buildCommand: "./venv/Scripts/pip install -r requirements.txt"
+    startCommand: "gunicorn JosePortafolio.wsgi:application"
+    plan: free
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: joseportafolio.onrender.com
