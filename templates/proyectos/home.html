@@ -1,89 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}Inicio - Portafolio{% endblock %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  {% load static %}
+{% block content %}
 
-    <meta charset="UTF-8">
-    <title>José Miguel - Portafolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body class="bg-dark text-white">
-
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">José Miguel</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Sobre mí</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Proyectos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-      </ul>
+<!-- CARRUSEL -->
+<div id="carouselHome" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/slider1.jpg' %}" class="d-block w-100" alt="Slider 1">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slider2.jpg' %}" class="d-block w-100" alt="Slider 2">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slider3.jpg' %}" class="d-block w-100" alt="Slider 3">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slider4.jpg' %}" class="d-block w-100" alt="Slider 4">
     </div>
   </div>
-</nav>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
 
-<!-- HERO -->
-<section class="text-center py-5 bg-secondary bg-gradient">
-  <div class="container">
-    <h1 class="display-4 fw-bold">¡Hola! Soy José Miguel</h1>
-    <p class="lead">Desarrollador web apasionado por crear soluciones útiles y visuales.</p>
-    <a href="#" class="btn btn-warning btn-lg mt-3">Descargar CV</a>
+<!-- HERO CON FONDO ANIMADO -->
+<section class="hero-wrap">
+  <div class="top-plane"></div>
+  <div class="bottom-plane"></div>
+  <div class="hero-content">
+    <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">¡Bienvenido a mi Portafolio!</h1>
+    <p class="lead animate__animated animate__fadeInUp">Explora mis proyectos y descubre cómo construyo soluciones digitales.</p>
+    <a href="#proyectos" class="btn btn-warning btn-lg mt-3 animate__animated animate__pulse animate__infinite">
+      Ver Proyectos
+    </a>
   </div>
 </section>
 
-<!-- PROYECTOS -->
-<section class="container py-5">
+
+
+<!-- PROYECTOS DESTACADOS -->
+<section id="proyectos" class="container py-5">
   <h2 class="text-center mb-5">Mis Proyectos</h2>
   <div class="row">
-    <!-- Proyecto 1 -->
     <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow bg-dark border-secondary">
-        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Proyecto 1">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/campusdemo.jpg' %}" class="card-img-top" alt="Campus 360">
         <div class="card-body">
-          <h5 class="card-title">Proyecto 1</h5>
-          <p class="card-text">Descripción breve de este proyecto.</p>
+          <h5 class="card-title">Campus 360</h5>
+          <p class="card-text">Plataforma web con búsqueda y venta de libros con carrito de compras.</p>
         </div>
       </div>
     </div>
-    <!-- Proyecto 2 -->
     <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow bg-dark border-secondary">
-        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Proyecto 2">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/compra.jpg' %}" class="card-img-top" alt="Lista de Compras">
         <div class="card-body">
-          <h5 class="card-title">Proyecto 2</h5>
-          <p class="card-text">Descripción breve de este proyecto.</p>
+          <h5 class="card-title">Lista de Compras</h5>
+          <p class="card-text">Aplicación móvil desarrollada con Ionic Framework para gestionar compras.</p>
         </div>
       </div>
     </div>
-    <!-- Proyecto 3 -->
     <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow bg-dark border-secondary">
-        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Proyecto 3">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/VoxyLibro.jpg' %}" class="card-img-top" alt="StudyMate">
         <div class="card-body">
-          <h5 class="card-title">Proyecto 3</h5>
-          <p class="card-text">Descripción breve de este proyecto.</p>
+          <h5 class="card-title">StudyMate</h5>
+          <p class="card-text">App con IA para fomentar la lectura y evaluar el progreso de estudiantes.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer class="bg-dark text-center py-3 border-top border-secondary">
-    <p class="mb-0">© 2025 José Miguel. Todos los derechos reservados.</p>
-</footer>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}

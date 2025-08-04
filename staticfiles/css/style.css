@@ -1,9 +1,111 @@
+/* === FONDO ANIMADO DE PLANOS === */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(#6084d7 25%, #a2cef4 50%, #a2cef4 50%, #6084d7 100%);
 }
-h1, h2 {
-    color: #ffc107;
+
+/* HERO con fondo animado */
+.hero-wrap {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    perspective: 360px;
+    perspective-origin: 50% 50%;
+    overflow: hidden;
+    z-index: 1;
 }
-.card-title {
-    color: #ffc107;
+.hero-wrap .top-plane,
+.hero-wrap .bottom-plane {
+    width: 200%;
+    height: 130%;
+    position: absolute;
+    left: -50%;
+    background-image: linear-gradient(#a2cef4 2px, transparent 2px),
+                      linear-gradient(to right, #a2cef4 2px, transparent 2px);
+    background-size: 100px 100px, 100px 100px;
+    background-position: -1px -1px, -1px -1px;
+    z-index: 0;
+}
+.hero-wrap .top-plane {
+    bottom: -30%;
+    transform: rotateX(85deg);
+    animation: planeMoveTop 2s infinite linear;
+}
+.hero-wrap .bottom-plane {
+    top: -30%;
+    transform: rotateX(-85deg);
+    animation: planeMoveBot 2s infinite linear;
+}
+@keyframes planeMoveTop {
+    from { background-position: 0px -100px, 0px 0px; }
+    to { background-position: 0px 0px, 100px 0px; }
+}
+@keyframes planeMoveBot {
+    from { background-position: 0px 0px, 0px 0px; }
+    to { background-position: 0px -100px, 100px 0px; }
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+.hero-content h1 {
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+.hero-content p {
+    color: #f0f0f0;
+}
+
+/* Botón animado */
+.btn-warning {
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-warning:hover {
+    transform: scale(1.1);
+}
+
+/* === PROYECTOS === */
+h2 {
+    color: #ffcc00;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+.card {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+    transition: transform 0.3s ease-in-out;
+}
+.card .card-title {
+    color: #ffcc00;
+}
+.card .card-text {
+    color: #ddd;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* === CARRUSEL === */
+#carouselHome .carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.8s ease-in-out;
+}
+#carouselHome .carousel-item {
+    transition: transform 1s ease, opacity 1s ease !important;
+}
+
+/* FOOTER */
+footer {
+    font-size: 0.9rem;
+    color: #ccc;
 }
