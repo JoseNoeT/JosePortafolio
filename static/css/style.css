@@ -1,0 +1,9 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1, h2 {
+    color: #ffc107;
+}
+.card-title {
+    color: #ffc107;
+}
